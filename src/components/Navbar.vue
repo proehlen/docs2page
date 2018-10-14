@@ -4,6 +4,7 @@
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/">
           <img src="/logo.svg">
+          <span class="tag version is-white">v{{ version }}</span>
         </router-link>
 
         <a role="button"
@@ -32,3 +33,20 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  name: 'navbar',
+  computed: {
+    version() {
+      return this.$store.state.packageFile.version;
+    },
+  },
+};
+</script>
+
+<style>
+  span.tag.version {
+    margin-top: -12px;
+  }
+</style>

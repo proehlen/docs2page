@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     docs: [],
     readMe: '',
+    packageFile: {},
   },
   getters: {
     apiType: state => typeName => state.docs.find(doc => doc.name === typeName),
@@ -28,9 +29,6 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    setReadMe(state, readMe) {
-      Vue.set(state, 'readMe', readMe);
-    },
     setDocs(state, docs) {
       Vue.set(state, 'docs', docs
         .sort((a, b) => {
@@ -43,12 +41,27 @@ export default new Vuex.Store({
           return result;
         }));
     },
+    setPackageFile(state, packageFile) {
+      Vue.set(state, 'packageFile', packageFile);
+    },
+    setReadMe(state, readMe) {
+      Vue.set(state, 'readMe', readMe);
+    },
   },
   actions: {
     async loadDocs({ commit }) {
       return axios.get('/docs.json')
         .then((response) => {
           commit('setDocs', response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    async loadPackageFile({ commit }) {
+      return axios.get('/package.json')
+        .then((response) => {
+          commit('setPackageFile', response.data);
         })
         .catch((error) => {
           console.log(error);

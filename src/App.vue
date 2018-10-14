@@ -20,6 +20,7 @@ export default {
   created() {
     this.$store.dispatch('loadDocs');
     this.$store.dispatch('loadReadMe');
+    this.$store.dispatch('loadPackageFile');
   },
 };
 </script>
