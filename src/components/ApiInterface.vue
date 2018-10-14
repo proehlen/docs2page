@@ -2,7 +2,7 @@
   <div class="notification">
     <code class="tag is-medium">(
       <span v-for="(param, index) in params" v-bind:key="param.name">
-        <span v-if="index > 0">,</span>{{ param.name }}:&nbsp;
+        <span v-if="index > 0">,&nbsp;</span>{{ param.name }}:&nbsp;
         <api-type-link :type-name="param.type.name"/>
       </span>
     ) =&gt;&nbsp;

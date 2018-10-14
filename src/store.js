@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-
-import convertMarkdown from './convertMarkdown';
+import marked from 'marked';
 
 Vue.use(Vuex);
 
@@ -70,7 +69,7 @@ export default new Vuex.Store({
     async loadReadMe({ commit }) {
       return axios.get('/README.md')
         .then((response) => {
-          const readMe = convertMarkdown(response.data);
+          const readMe = marked(response.data);
           commit('setReadMe', readMe);
         })
         .catch((error) => {

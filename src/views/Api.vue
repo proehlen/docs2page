@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="columns is-variable is-8">
-      <div class="column is-narrow box">
+      <div class="column is-narrow">
         <api-menu />
       </div>
       <div class="column">

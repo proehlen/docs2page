@@ -31,12 +31,8 @@ export default {
 </style>
 
 <style>
-  p {
-    margin-bottom: 0.75rem;
-  }
   section {
     padding-top: 1.25rem !important;
     padding-bottom: 1.25rem !important;
   }
 </style>
-

@@ -1,5 +1,5 @@
 <template>
-  <div v-html="readMe">
+  <div class="content" v-html="readMe">
   </div>
 </template>
 
