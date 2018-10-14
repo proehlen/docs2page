@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/">
-          <img src="/logo.svg">
+          <img src="logo.svg">
           <span class="tag version is-white">v{{ version }}</span>
         </router-link>
 
@@ -26,7 +26,7 @@
 
         <div class="navbar-end">
           <a class="navbar-item is-white" href="https://github.com/proehlen/cashlib">
-            <img src="/GitHub.png">
+            <img src="GitHub.png">
           </a>
       </div>
       </div>
