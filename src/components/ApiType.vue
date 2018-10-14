@@ -2,7 +2,7 @@
   <div v-if="apiType">
     <div class="columns is-gapless">
       <div class="column">
-        <h1 class="title">
+        <h1 class="subtitle is-3">
           {{ apiType.name }}
           <span class="tag is-light has-text-weight-normal">{{ apiType.kind }}</span>
         </h1>
@@ -17,14 +17,30 @@
     <api-description :description="apiType.description"/>
 
     <div v-if="apiType.kind === 'class'"
-      class="columns is-gapless">
+      class="columns">
       <div class="column is-half">
-        <h2 class="subtitle">Static members</h2>
-        <api-members :members="apiType.members.static"/>
+        <div class="card">
+          <div class="card-header">
+            <p class="card-header-title">
+              Static members
+            </p>
+          </div>
+          <div class="card-content">
+            <api-members :members="apiType.members.static"/>
+          </div>
+        </div>
       </div>
       <div class="column is-half">
-        <h2 class="subtitle">Instance members</h2>
-        <api-members :members="apiType.members.instance"/>
+        <div class="card">
+          <div class="card-header">
+            <p class="card-header-title">
+              Instance members
+            </p>
+          </div>
+          <div class="card-content">
+            <api-members :members="apiType.members.instance"/>
+          </div>
+        </div>
       </div>
     </div>
   </div>

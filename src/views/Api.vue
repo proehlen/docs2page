@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="columns is-variable is-8">
+    <div class="columns">
       <div class="column is-narrow">
         <api-menu />
       </div>
