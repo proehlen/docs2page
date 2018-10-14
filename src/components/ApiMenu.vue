@@ -3,8 +3,9 @@
     <ul class="menu-list">
       <li v-for="item in docs" v-bind:key="item.name">
         <router-link
-          :class="{ 'is-active': item.name === $route.params.topic }"
-          :to="`/api/${item.name}`"
+          :class="{ 'is-active': item.name === $route.params.typeName }"
+          :to="{ name: 'apiType', params: { typeName: item.name }}"
+          nav=""
           @click.native="scrollToTop">
           {{ item.name }}
         </router-link>

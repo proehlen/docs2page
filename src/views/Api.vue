@@ -5,7 +5,12 @@
         <api-menu />
       </div>
       <div class="column">
-        <router-view></router-view>
+        <section class="section">
+          <api-type v-if="this.$route.params.typeName"/>
+        </section>
+        <section class="section">
+          <api-member v-if="this.$route.params.memberName"/>
+        </section>
       </div>
     </div>
   </div>
@@ -13,10 +18,14 @@
 
 <script>
 import ApiMenu from '@/components/ApiMenu.vue';
+import ApiType from '@/components/ApiType.vue';
+import ApiMember from '@/components/ApiMember.vue';
 
 export default {
   name: 'api',
   components: {
+    ApiType,
+    ApiMember,
     ApiMenu,
   },
 };

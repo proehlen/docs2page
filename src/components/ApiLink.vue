@@ -1,6 +1,6 @@
 <template>
   <span>
-    <router-link v-if="link.jsdoc" :to="`/api/${link.url}`">
+    <router-link v-if="link.jsdoc" :to="{ name: 'apiType', params: {typeName: link.url }}">
       <span v-for="(rootChild, index) in link.children" v-bind:key="index">
         <span v-if="rootChild.type === 'text'">{{ rootChild.value }}</span>
 

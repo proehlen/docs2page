@@ -2,19 +2,34 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
+import convertMarkdown from './convertMarkdown';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     docs: [],
-    selected: {},
+    readMe: '',
+  },
+  getters: {
+    apiType: state => typeName => state.docs.find(doc => doc.name === typeName),
+    apiMember: state => (typeName, memberName) => {
+      const apiType = state.docs.find(doc => doc.name === typeName);
+      let apiMember;
+      if (apiType) {
+        // Look for static member
+        apiMember = apiType.members.static.find(member => member.name === memberName);
+        if (!apiMember) {
+          // Look for instance member
+          apiMember = apiType.members.instance.find(member => member.name === memberName);
+        }
+      }
+      return apiMember;
+    },
   },
   mutations: {
-    setSelectedTopic(state, name) {
-      Vue.set(state, 'selected', {});
-      const selected = state.docs
-        .find(topic => topic.name === name);
-      Vue.set(state, 'selected', selected);
+    setReadMe(state, readMe) {
+      Vue.set(state, 'readMe', readMe);
     },
     setDocs(state, docs) {
       Vue.set(state, 'docs', docs
@@ -34,6 +49,16 @@ export default new Vuex.Store({
       return axios.get('/docs.json')
         .then((response) => {
           commit('setDocs', response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    async loadReadMe({ commit }) {
+      return axios.get('/README.md')
+        .then((response) => {
+          const readMe = convertMarkdown(response.data);
+          commit('setReadMe', readMe);
         })
         .catch((error) => {
           console.log(error);

@@ -19,3 +19,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+public/package.json
+public/docs.json
+public/README.md

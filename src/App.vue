@@ -19,6 +19,7 @@ export default {
   },
   created() {
     this.$store.dispatch('loadDocs');
+    this.$store.dispatch('loadReadMe');
   },
 };
 </script>
@@ -31,6 +32,10 @@ export default {
 <style>
   p {
     margin-bottom: 0.75rem;
+  }
+  section {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
   }
 </style>
 

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <span v-for="(rootChild, index) in description.children" v-bind:key="index">
+    <p v-if="typeof description === 'string'">{{ description }}</p>
+    <span v-else v-for="(rootChild, index) in description.children" v-bind:key="index">
       <p v-if="rootChild.type === 'paragraph'">
         <span v-for="(level1Child, index) in rootChild.children" v-bind:key="index">
           <span v-if="level1Child.type === 'text'">{{ level1Child.value }}</span>
@@ -29,7 +30,6 @@ export default {
   },
   props: {
     description: {
-      type: Object,
       required: true,
     },
   },

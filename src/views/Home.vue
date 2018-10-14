@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1 class="title">Welcome</h1>
+  <div v-html="readMe">
   </div>
 </template>
 
@@ -8,7 +7,10 @@
 
 export default {
   name: 'home',
-  components: {
+  computed: {
+    readMe() {
+      return this.$store.state.readMe;
+    },
   },
 };
 </script>
