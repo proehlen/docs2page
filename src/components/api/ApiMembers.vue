@@ -23,7 +23,7 @@ export default {
   methods: {
     setSelectedMember(member) {
       this.$router.push({
-        name: 'apiMember',
+        name: 'apiObjectTypeMember',
         params: {
           typeName: this.$route.params.typeName,
           memberName: member,

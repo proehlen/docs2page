@@ -1,22 +1,22 @@
 <template>
-  <div v-if="apiType">
+  <div v-if="objectType">
     <div class="columns is-gapless">
       <div class="column">
         <h1 class="subtitle is-3">
-          {{ apiType.name }}
-          <span class="tag is-light has-text-weight-normal">{{ apiType.kind }}</span>
+          {{ objectType.name }}
+          <span class="tag is-light has-text-weight-normal">{{ objectType.kind }}</span>
         </h1>
       </div>
       <div class="column is-narrow">
         <button class="button">
-          <a v-if="apiType.context && apiType.context.github"
-            :href="apiType.context.github.url">source</a>
+          <a v-if="objectType.context && objectType.context.github"
+            :href="objectType.context.github.url">source</a>
         </button>
       </div>
     </div>
-    <api-description :node="apiType.description"/>
+    <api-description :node="objectType.description"/>
 
-    <div v-if="apiType.kind === 'class'"
+    <div v-if="objectType.kind === 'class'"
       class="columns">
       <div class="column is-half">
         <div class="card">
@@ -26,7 +26,7 @@
             </p>
           </div>
           <div class="card-content">
-            <api-members :members="apiType.members.static"/>
+            <api-members :members="objectType.members.static"/>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
             </p>
           </div>
           <div class="card-content">
-            <api-members :members="apiType.members.instance"/>
+            <api-members :members="objectType.members.instance"/>
           </div>
         </div>
       </div>
@@ -47,18 +47,18 @@
 </template>
 
 <script>
-import ApiDescription from '@/components/ApiDescription.vue';
-import ApiMembers from '@/components/ApiMembers.vue';
+import ApiDescription from './ApiDescription.vue';
+import ApiMembers from './ApiMembers.vue';
 
 export default {
-  name: 'api-type',
+  name: 'api-object-type',
   components: {
     ApiDescription,
     ApiMembers,
   },
   computed: {
-    apiType() {
-      return this.$store.getters.apiType(this.$route.params.typeName);
+    objectType() {
+      return this.$store.getters.objectType(this.$route.params.objectTypeName);
     },
   },
 };

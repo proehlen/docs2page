@@ -6,7 +6,7 @@
       </div>
       <div class="column">
         <section class="section">
-          <api-type v-if="this.$route.params.typeName"/>
+          <api-object-type v-if="this.$route.params.objectTypeName"/>
         </section>
         <section class="section">
           <api-member v-if="this.$route.params.memberName"/>
@@ -17,14 +17,14 @@
 </template>
 
 <script>
-import ApiMenu from '@/components/ApiMenu.vue';
-import ApiType from '@/components/ApiType.vue';
-import ApiMember from '@/components/ApiMember.vue';
+import ApiMenu from '../components/api/ApiMenu.vue';
+import ApiObjectType from '../components/api/ApiObjectType.vue';
+import ApiMember from '../components/api/ApiMember.vue';
 
 export default {
   name: 'api',
   components: {
-    ApiType,
+    ApiObjectType,
     ApiMember,
     ApiMenu,
   },

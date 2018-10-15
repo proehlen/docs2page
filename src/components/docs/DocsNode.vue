@@ -1,5 +1,6 @@
 <template>
   <docs-emphasis v-if="node.type === 'emphasis'" :node="node"/>
+  <docs-inline-code v-else-if="node.type === 'inlineCode'" :node="node"/>
   <docs-link v-else-if="node.type === 'link'" :node="node"/>
   <docs-list v-else-if="node.type === 'list'" :node="node"/>
   <docs-list-item v-else-if="node.type === 'listItem'" :node="node"/>
@@ -10,6 +11,7 @@
 
 <script>
 import DocsEmphasis from './DocsEmphasis.vue';
+import DocsInlineCode from './DocsInlineCode.vue';
 import DocsLink from './DocsLink.vue';
 import DocsList from './DocsList.vue';
 import DocsListItem from './DocsListItem.vue';
@@ -25,6 +27,7 @@ export default {
   },
   components: {
     'docs-emphasis': DocsEmphasis,
+    'docs-inline-code': DocsInlineCode,
     'docs-link': DocsLink,
     'docs-list': DocsList,
     'docs-list-item': DocsListItem,

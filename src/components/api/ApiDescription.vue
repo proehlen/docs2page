@@ -7,7 +7,7 @@
 
 <script>
 
-import DocsNode from './docs/DocsNode.vue';
+import DocsNode from '../docs/DocsNode.vue';
 
 export default {
   name: 'api-description',
