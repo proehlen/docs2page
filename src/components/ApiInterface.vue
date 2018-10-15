@@ -1,5 +1,5 @@
 <template>
-  <div class="notification">
+  <div class="notification is-paddingless">
     <code class="tag is-medium">(
       <span v-for="(param, index) in params" v-bind:key="param.name">
         <span v-if="index > 0">,&nbsp;</span>{{ param.name }}:&nbsp;
