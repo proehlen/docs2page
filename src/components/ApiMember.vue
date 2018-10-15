@@ -3,7 +3,7 @@
     <h1 class="subtitle is-4">{{ member.name }}</h1>
     <api-interface v-if="member.kind === 'function'"
       :params="member.params" :returns="member.returns"/>
-    <api-description :description="member.description" />
+    <api-description :node="member.description" />
   </div>
 </template>
 

@@ -14,7 +14,7 @@
         </button>
       </div>
     </div>
-    <api-description :description="apiType.description"/>
+    <api-description :node="apiType.description"/>
 
     <div v-if="apiType.kind === 'class'"
       class="columns">
