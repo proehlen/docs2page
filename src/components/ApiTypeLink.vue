@@ -1,7 +1,6 @@
 <template>
   <a v-if="externalUrl" :href="externalUrl" target="_new">{{ typeName }}</a>
   <router-link v-else-if="libraryType"
-    @click.native="scrollToTop"
     :to="{ name: 'apiType', params: { typeName, }}">
     {{ typeName }}
   </router-link>
@@ -37,11 +36,6 @@ export default {
     },
     libraryType() {
       return this.$store.getters.apiType(this.typeName);
-    },
-  },
-  methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0);
     },
   },
 };

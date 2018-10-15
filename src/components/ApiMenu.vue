@@ -16,8 +16,7 @@
       v-for="item in docs" v-bind:key="item.name"
       :class="{ 'is-active': item.name === $route.params.typeName }"
       :to="{ name: 'apiType', params: { typeName: item.name }}"
-      nav=""
-      @click.native="scrollToTop">
+      nav="">
       {{ item.name }}
     </router-link>
   </nav>
@@ -29,11 +28,6 @@ export default {
   computed: {
     docs() {
       return this.$store.state.docs;
-    },
-  },
-  methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0);
     },
   },
 };

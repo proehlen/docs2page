@@ -28,4 +28,17 @@ export default new Router({
       name: 'apiMember',
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    let returnValue;
+    if (to.hash) {
+      returnValue = {
+        selector: to.hash,
+      };
+    } else if (savedPosition) {
+      returnValue = savedPosition;
+    } else {
+      returnValue = { x: 0, y: 0 };
+    }
+    return returnValue;
+  },
 });
