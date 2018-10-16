@@ -1,6 +1,6 @@
 <template>
-  <div class="notification is-paddingless">
-    <code class="tag is-medium">{{ prefix }}(
+  <pre class="api-method-interface">
+    <code class="api-method-interface">{{ prefix }}(
       <span v-for="(param, index) in params" v-bind:key="param.name">
         <span v-if="index > 0">,&nbsp;</span>
         <span v-if="param.name">{{ param.name }}: </span>
@@ -12,7 +12,7 @@
         <api-type-link :api-type="returnType.type"/>
       </span>
     </code>
-  </div>
+  </pre>
 </template>
 
 <script>
@@ -37,3 +37,12 @@ export default {
   },
 };
 </script>
+
+<style>
+  pre.api-method-interface {
+    width: 100%;
+    margin-bottom: 1rem;
+    white-space: normal;
+    padding: 0.75rem;
+  }
+</style>
