@@ -49,7 +49,7 @@ export default new Vuex.Store({
   },
   actions: {
     async loadDocs({ commit }) {
-      return axios.get('/docs.json')
+      return axios.get('docs.json')
         .then((response) => {
           commit('setDocs', response.data);
         })
@@ -58,7 +58,7 @@ export default new Vuex.Store({
         });
     },
     async loadPackageFile({ commit }) {
-      return axios.get('/package.json')
+      return axios.get('package.json')
         .then((response) => {
           commit('setPackageFile', response.data);
         })
@@ -67,7 +67,7 @@ export default new Vuex.Store({
         });
     },
     async loadReadMe({ commit }) {
-      return axios.get('/README.md')
+      return axios.get('README.md')
         .then((response) => {
           const readMe = marked(response.data);
           commit('setReadMe', readMe);
