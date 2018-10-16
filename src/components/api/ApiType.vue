@@ -22,6 +22,14 @@
       <api-type :apiType="element"/>
     </span>
   </span>
+  <span v-else-if="apiType.type === 'TypeApplication'">
+    <api-type :apiType="apiType.expression"/>
+    of
+    <span v-for="(application, index) in apiType.applications" v-bind:key="index">
+      <span v-if="index > 0">,&nbsp;</span>
+      <api-type :apiType="application"/>
+    </span>
+  </span>
   <span v-else>{{ apiType.name || `Unrecognized ${apiType.type}` }}</span>
 </template>
 
