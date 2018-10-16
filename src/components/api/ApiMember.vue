@@ -2,6 +2,7 @@
   <div v-if="member">
     <h1 class="subtitle is-4">{{ member.name }}</h1>
     <api-method-interface
+      :prefix="member.name"
       v-if="member.kind === 'function'"
       :params="member.params" :returns="member.returns"/>
     <api-property-type

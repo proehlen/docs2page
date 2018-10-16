@@ -49,6 +49,8 @@ export default {
       let url;
       if (this.apiType.name === 'BigInt') {
         url = 'https://www.npmjs.com/package/big-integer';
+      } else if (this.apiType.name === 'Buffer') {
+        url = 'https://nodejs.org/api/buffer.html';
       } else if (jsTypes.includes(this.apiType.name)) {
         const objectName = `${this.apiType.name.substr(0, 1).toUpperCase()}${this.apiType.name.substr(1)}`;
         url = `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/${objectName}`;

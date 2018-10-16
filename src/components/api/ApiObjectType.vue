@@ -8,12 +8,17 @@
         </h1>
       </div>
       <div class="column is-narrow">
-        <button class="button">
-          <a v-if="objectType.context && objectType.context.github"
-            :href="objectType.context.github.url">source</a>
-        </button>
+        <a class="button"
+          target="_new"
+          v-if="objectType.context && objectType.context.github"
+          :href="objectType.context.github.url">source</a>
       </div>
     </div>
+
+    <api-method-interface v-if="objectType.kind === 'class'"
+      :prefix="`new ${objectType.name}`"
+      :params="objectType.params"/>
+
     <api-description :node="objectType.description"/>
 
     <div v-if="objectType.kind === 'class'"
@@ -49,12 +54,14 @@
 <script>
 import ApiDescription from './ApiDescription.vue';
 import ApiMembers from './ApiMembers.vue';
+import ApiMethodInterface from './ApiMethodInterface.vue';
 
 export default {
   name: 'api-object-type',
   components: {
     ApiDescription,
     ApiMembers,
+    ApiMethodInterface,
   },
   computed: {
     objectType() {

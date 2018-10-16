@@ -1,5 +1,7 @@
 # cashlib-page
 
+This repo is for the `cashlib` library GitHub page.
+
 ## Project setup
 
 ```
