@@ -2,14 +2,16 @@
   <div v-if="objectType">
     <div class="columns is-gapless">
       <div class="column">
-        <p class="title">
-          <span class="tag is-white has-text-weight-normal">{{ objectType.kind }}</span>
+        <span class="tag is-white has-text-weight-normal">{{ objectType.kind }}</span>
+        <span class="title">
           {{ objectType.name }}
-        </p>
-        <p class="subtitle" v-if="objectType.augments.length">
+        </span>
+        <span v-if="objectType.augments.length">
           <span class="tag is-white has-text-weight-normal">extends</span>
-          <api-named-type-link :type-name="objectType.augments[0].name"/>
-        </p>
+          <span class="subtitle">
+            <api-named-type-link :type-name="objectType.augments[0].name"/>
+          </span>
+        </span>
       </div>
       <div class="column is-narrow">
         <a class="button"
