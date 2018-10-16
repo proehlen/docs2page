@@ -3,11 +3,11 @@
     <div class="columns is-gapless">
       <div class="column">
         <p class="title">
-          <span class="tag is-light has-text-weight-normal">{{ objectType.kind }}</span>
+          <span class="tag is-white has-text-weight-normal">{{ objectType.kind }}</span>
           {{ objectType.name }}
         </p>
         <p class="subtitle" v-if="objectType.augments.length">
-          <span class="tag is-light has-text-weight-normal">extends</span>
+          <span class="tag is-white has-text-weight-normal">extends</span>
           <api-named-type-link :type-name="objectType.augments[0].name"/>
         </p>
       </div>
@@ -20,9 +20,7 @@
     </div>
 
     <!-- Class constructor signature -->
-    <api-method-interface v-if="showConstructor"
-      :prefix="`new ${objectType.name}`"
-      :params="objectType.params"/>
+    <api-constructor :object-type="objectType"/>
 
     <!-- Object type description -->
     <api-description :node="objectType.description"/>
@@ -59,6 +57,7 @@
 </template>
 
 <script>
+import ApiConstructor from './ApiConstructor.vue';
 import ApiDescription from './ApiDescription.vue';
 import ApiMembers from './ApiMembers.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
@@ -67,6 +66,7 @@ import ApiNamedTypeLink from './ApiNamedTypeLink.vue';
 export default {
   name: 'api-object-type',
   components: {
+    ApiConstructor,
     ApiDescription,
     ApiMembers,
     ApiMethodInterface,
