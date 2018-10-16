@@ -3,6 +3,7 @@
     <span class="tag is-medium"
       :class="{ 'is-white': $route.params.memberName === member.name }"
       v-for="(member, index) in members"
+      @click="setSelectedMember(member.name)"
       v-bind:key="index">
       <a v-if="$route.params.memberName !== member.name"
         @click="setSelectedMember(member.name)">{{ member.name }}</a>

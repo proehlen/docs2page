@@ -15,12 +15,15 @@
       </div>
     </div>
 
-    <api-method-interface v-if="objectType.kind === 'class'"
+    <!-- Class constructor signature -->
+    <api-method-interface v-if="showConstructor"
       :prefix="`new ${objectType.name}`"
       :params="objectType.params"/>
 
+    <!-- Object type description -->
     <api-description :node="objectType.description"/>
 
+    <!-- Class members -->
     <div v-if="objectType.kind === 'class'"
       class="columns">
       <div class="column is-half">
@@ -66,6 +69,12 @@ export default {
   computed: {
     objectType() {
       return this.$store.getters.objectType(this.$route.params.objectTypeName);
+    },
+    showConstructor() {
+      return (this.objectType.kind === 'class'
+        && !(this.objectType.constructorComment
+          && this.objectType.constructorComment.tags
+          && this.objectType.constructorComment.tags.find(tag => tag.title === 'hideconstructor')));
     },
   },
 };
