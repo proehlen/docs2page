@@ -22,6 +22,13 @@
     <!-- Class constructor signature -->
     <api-constructor :object-type="objectType"/>
 
+    <!-- Function interface -->
+    <api-method-interface
+      v-if="objectType.kind === 'function'"
+      :prefix="objectType.name"
+      :params="objectType.params"
+      :returns="objectType.returns"/>
+
     <!-- Typedef elements -->
     <api-property-type v-if="objectType.kind === 'typedef'"
       :apiType="objectType.type"/>
