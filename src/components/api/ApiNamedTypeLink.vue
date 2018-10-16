@@ -28,10 +28,6 @@ export default {
       required: true,
     },
   },
-  components: {
-    // Mitigate component recursion using webpack dynamic import
-    'api-type-link': () => import('./ApiTypeLink.vue'),
-  },
   computed: {
     externalUrl() {
       let url;

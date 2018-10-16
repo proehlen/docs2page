@@ -1,13 +1,13 @@
 <template>
-  <div class="notification is-paddingless">
-    <code class="tag is-medium">
-      <api-type-link :api-type="apiType"/>
+  <pre class="api-property-type">
+    <code>
+      <api-type :api-type="apiType"/>
     </code>
-  </div>
+  </pre>
 </template>
 
 <script>
-import ApiTypeLink from './ApiTypeLink.vue';
+import ApiType from './ApiType.vue';
 
 export default {
   name: 'api-property-type',
@@ -18,7 +18,16 @@ export default {
     },
   },
   components: {
-    ApiTypeLink,
+    ApiType,
   },
 };
 </script>
+
+<style>
+  pre.api-property-type {
+    width: 100%;
+    margin-bottom: 1rem;
+    white-space: normal;
+    padding: 0.75rem;
+  }
+</style>

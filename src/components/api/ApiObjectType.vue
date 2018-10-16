@@ -22,8 +22,13 @@
     <!-- Class constructor signature -->
     <api-constructor :object-type="objectType"/>
 
+    <!-- Typedef elements -->
+    <api-property-type v-if="objectType.kind === 'typedef'"
+      :apiType="objectType.type"/>
+
     <!-- Object type description -->
     <api-description :node="objectType.description"/>
+
 
     <!-- Class members -->
     <div v-if="objectType.kind === 'class'"
@@ -62,6 +67,7 @@ import ApiDescription from './ApiDescription.vue';
 import ApiMembers from './ApiMembers.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
 import ApiNamedTypeLink from './ApiNamedTypeLink.vue';
+import ApiPropertyType from './ApiPropertyType.vue';
 
 export default {
   name: 'api-object-type',
@@ -71,6 +77,7 @@ export default {
     ApiMembers,
     ApiMethodInterface,
     ApiNamedTypeLink,
+    ApiPropertyType,
   },
   computed: {
     objectType() {
