@@ -2,10 +2,14 @@
   <div v-if="objectType">
     <div class="columns is-gapless">
       <div class="column">
-        <h1 class="subtitle is-3">
-          {{ objectType.name }}
+        <p class="title">
           <span class="tag is-light has-text-weight-normal">{{ objectType.kind }}</span>
-        </h1>
+          {{ objectType.name }}
+        </p>
+        <p class="subtitle" v-if="objectType.augments.length">
+          <span class="tag is-light has-text-weight-normal">extends</span>
+          <api-named-type-link :type-name="objectType.augments[0].name"/>
+        </p>
       </div>
       <div class="column is-narrow">
         <a class="button"
@@ -58,6 +62,7 @@
 import ApiDescription from './ApiDescription.vue';
 import ApiMembers from './ApiMembers.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
+import ApiNamedTypeLink from './ApiNamedTypeLink.vue';
 
 export default {
   name: 'api-object-type',
@@ -65,6 +70,7 @@ export default {
     ApiDescription,
     ApiMembers,
     ApiMethodInterface,
+    ApiNamedTypeLink,
   },
   computed: {
     objectType() {
