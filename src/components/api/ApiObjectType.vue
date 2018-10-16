@@ -38,7 +38,8 @@
 
 
     <!-- Class members -->
-    <div v-if="objectType.kind === 'class'"
+    <div id="api-members"
+      v-if="objectType.kind === 'class'"
       class="columns">
       <div class="column is-half">
         <div class="card">
