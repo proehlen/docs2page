@@ -5,7 +5,7 @@
     </p>
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input is-small" type="text" placeholder="search not available yet" disabled>
+        <input class="input is-small" type="text" placeholder="search" v-model="filter">
         <!-- <span class="icon is-small is-left">
           <i class="fas fa-search" aria-hidden="true"></i>
         </span> -->
@@ -27,7 +27,15 @@ export default {
   name: 'api-menu',
   computed: {
     docs() {
-      return this.$store.state.docs;
+      return this.$store.getters.filteredObjectTypes;
+    },
+    filter: {
+      get() {
+        return this.$store.state.filter;
+      },
+      set(filter) {
+        this.$store.commit('setFilter', filter);
+      },
     },
   },
 };

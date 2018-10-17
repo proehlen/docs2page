@@ -8,11 +8,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     docs: [],
+    filter: '',
     readMe: '',
     packageFile: {},
   },
   getters: {
     objectType: state => typeName => state.docs.find(doc => doc.name === typeName),
+    filteredObjectTypes: state => state.filter
+      ? state.docs.filter(doc => doc.name && doc.name.toUpperCase().includes(state.filter.toUpperCase()))
+      : state.docs,
     objectTypeMember: state => (typeName, memberName) => {
       const apiType = state.docs.find(doc => doc.name === typeName);
       let apiObjectTypeMember;
@@ -28,6 +32,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setFilter(state, filter) {
+      Vue.set(state, 'filter', filter);
+    },
     setDocs(state, docs) {
       Vue.set(state, 'docs', docs
         .sort((a, b) => {
