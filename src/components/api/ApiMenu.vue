@@ -4,12 +4,21 @@
       Api
     </p>
     <div class="panel-block">
-      <p class="control has-icons-left">
-        <input class="input is-small" type="text" placeholder="search" v-model="filter">
-        <span class="icon is-small is-left">
-          <font-awesome-icon icon="search" />
-        </span>
-      </p>
+      <div class="field has-addons">
+        <div class="control has-icons-left">
+          <input class="input is-small" type="text" placeholder="search" v-model="filter">
+          <span class="icon is-small is-left">
+            <font-awesome-icon icon="search" />
+          </span>
+        </div>
+        <div class="control">
+          <a class="button is-small is-white" @click="clearFilter" :disabled="!filter">
+            <span class="icon">
+              <font-awesome-icon icon="times" />
+            </span>
+          </a>
+        </div>
+      </div>
     </div>
     <router-link
       class="panel-block"
@@ -36,6 +45,11 @@ export default {
       set(filter) {
         this.$store.commit('setFilter', filter);
       },
+    },
+  },
+  methods: {
+    clearFilter() {
+      this.$store.commit('setFilter', '');
     },
   },
 };
