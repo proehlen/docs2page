@@ -14,25 +14,6 @@ export default new Vuex.Store({
     readMe: '',
     packageFile: {},
   },
-  getters: {
-    objectType: state => typeName => state.docs.find(doc => doc.name === typeName),
-    filteredObjectTypes: state => state.filter
-      ? state.docs.filter(doc => matchDocToFilter(doc, state))
-      : state.docs,
-    objectTypeMember: state => (typeName, memberName) => {
-      const apiType = state.docs.find(doc => doc.name === typeName);
-      let apiObjectTypeMember;
-      if (apiType) {
-        // Look for static member
-        apiObjectTypeMember = apiType.members.static.find(member => member.name === memberName);
-        if (!apiObjectTypeMember) {
-          // Look for instance member
-          apiObjectTypeMember = apiType.members.instance.find(member => member.name === memberName);
-        }
-      }
-      return apiObjectTypeMember;
-    },
-  },
   mutations: {
     setFilter(state, filter) {
       Vue.set(state, 'filter', filter);
@@ -54,6 +35,29 @@ export default new Vuex.Store({
     },
     setReadMe(state, readMe) {
       Vue.set(state, 'readMe', readMe);
+    },
+    toggleMenuExpanded(state, rootName) {
+      const index = state.docs.findIndex(doc => doc.name === rootName);
+      Vue.set(state.docs[index], 'menuExpanded', !state.docs[index].menuExpanded);
+    },
+  },
+  getters: {
+    objectType: state => typeName => state.docs.find(doc => doc.name === typeName),
+    filteredObjectTypes: state => state.filter
+      ? state.docs.filter(doc => matchDocToFilter(doc, state))
+      : state.docs,
+    objectTypeMember: state => (typeName, memberName) => {
+      const apiType = state.docs.find(doc => doc.name === typeName);
+      let apiObjectTypeMember;
+      if (apiType) {
+        // Look for static member
+        apiObjectTypeMember = apiType.members.static.find(member => member.name === memberName);
+        if (!apiObjectTypeMember) {
+          // Look for instance member
+          apiObjectTypeMember = apiType.members.instance.find(member => member.name === memberName);
+        }
+      }
+      return apiObjectTypeMember;
     },
   },
   actions: {
