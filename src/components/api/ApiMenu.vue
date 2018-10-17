@@ -23,7 +23,7 @@
     <router-link
       class="panel-block"
       v-for="item in docs" v-bind:key="item.name"
-      :class="{ 'is-active': item.name === $route.params.typeName }"
+      :class="{ 'is-active': item.name === $route.params.objectTypeName }"
       :to="{ name: 'apiObjectType', params: { objectTypeName: item.name }}"
       nav="">
       {{ item.name }}
