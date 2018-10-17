@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <div class="columns">
-      <div class="column is-narrow">
-        <api-menu />
-      </div>
-      <div class="column">
-        <section class="section">
-          <api-object-type v-if="this.$route.params.objectTypeName"/>
-        </section>
-        <section class="section">
-          <api-member v-if="this.$route.params.memberName"/>
-        </section>
-      </div>
+  <div class="columns">
+    <div class="column is-narrow">
+      <api-menu class="api-menu"/>
+    </div>
+    <div class="column">
+      <section class="section">
+        <api-object-type v-if="this.$route.params.objectTypeName"/>
+      </section>
+      <section class="section">
+        <api-member v-if="this.$route.params.memberName"/>
+      </section>
     </div>
   </div>
 </template>
@@ -30,4 +28,3 @@ export default {
   },
 };
 </script>
-

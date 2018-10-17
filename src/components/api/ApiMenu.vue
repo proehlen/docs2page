@@ -1,13 +1,9 @@
 <template>
-  <nav class="box">
-      <p class="subtitle is-5">
-          Api
-      </p>
-
+  <nav class="box api-menu api-menu-vscroll">
       <!-- Search tool -->
       <p class="field has-addons">
-        <span class="control has-icons-left">
-          <input class="input is-small" type="text" placeholder="search" v-model="filter">
+        <span class="control has-icons-left is-expanded">
+          <input class="input is-small" type="text" placeholder="Search API" v-model="filter">
           <span class="icon is-small is-left">
             <font-awesome-icon icon="search" />
           </span>
@@ -21,14 +17,14 @@
         </span>
       </p>
 
-    <table class="table is-narrow is-fullwidth is-hoverable">
+    <table class="table is-narrow is-fullwidth is-hoverable api-menu-table">
       <tbody>
       <!-- Root types -->
       <div v-for="(item, index) in docs" v-bind:key="index">
         <tr
           @click="navToObjecType(item)"
           :class="{ 'is-active': item.name === $route.params.objectTypeName }">
-          <td @click.stop="toggleExpanded(item)">
+          <td class="expand-button-cell" @click.stop="toggleExpanded(item)">
             <div class="button is-small is-white">
               <span class="icon is-small">
                 <span v-if="hasMembers(item)">
@@ -131,3 +127,15 @@ export default {
 };
 </script>
 
+<style>
+  td.expand-button-cell {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .api-menu-vscroll {
+    height: calc( 100vh - 110px );
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
+  }
+</style>
