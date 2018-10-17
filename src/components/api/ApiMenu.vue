@@ -6,9 +6,9 @@
     <div class="panel-block">
       <p class="control has-icons-left">
         <input class="input is-small" type="text" placeholder="search" v-model="filter">
-        <!-- <span class="icon is-small is-left">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </span> -->
+        <span class="icon is-small is-left">
+          <font-awesome-icon icon="search" />
+        </span>
       </p>
     </div>
     <router-link
