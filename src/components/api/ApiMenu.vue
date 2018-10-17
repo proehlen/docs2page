@@ -19,62 +19,21 @@
 
     <table class="table is-narrow is-fullwidth is-hoverable api-menu-table">
       <tbody>
-      <!-- Root types -->
-      <div v-for="(item, index) in docs" v-bind:key="index">
-        <tr
-          @click="navToObjecType(item)"
-          :class="{ 'is-active': item.name === $route.params.objectTypeName }">
-          <td class="expand-button-cell" @click.stop="toggleExpanded(item)">
-            <div class="button is-small is-white">
-              <span class="icon is-small">
-                <span v-if="hasMembers(item)">
-                  <font-awesome-icon v-if="item.menuExpanded" icon="chevron-down" />
-                  <font-awesome-icon v-else icon="chevron-right" />
-                </span>
-              </span>
-            </div>
-          </td>
-          <td colspan=2>
-            {{ item.name }}
-          </td>
-        </tr>
-
-        <!-- Static Members -->
-        <tr
-          v-if="item.menuExpanded"
-          v-for="member in item.members.static"
-          v-bind:key="member.namespace"
-          @click.stop="navToMember(item, member)"
-          :class="{ 'is-active': member.name === $route.params.memberName }">
-          <td />
-          <td />
-          <td>
-            {{ member.name }}
-          </td>
-        </tr>
-
-        <!-- Instance Members -->
-        <tr
-          v-if="item.menuExpanded"
-          v-for="member in item.members.instance"
-          v-bind:key="member.namespace"
-          @click.stop="navToMember(item, member)"
-          :class="{ 'is-active': member.name === $route.params.memberName }">
-          <td />
-          <td />
-          <td>
-            {{ member.name }}
-          </td>
-        </tr>
-      </div>
+        <!-- Root types -->
+        <api-menu-root-item v-for="(item, index) in docs" v-bind:key="index" :item="item"/>
       </tbody>
     </table>
   </nav>
 </template>
 
 <script>
+import ApiMenuRootItem from './ApiMenuRootItem.vue';
+
 export default {
   name: 'api-menu',
+  components: {
+    ApiMenuRootItem,
+  },
   computed: {
     docs() {
       return this.$store.getters.filteredObjectTypes;
@@ -89,28 +48,8 @@ export default {
     },
   },
   methods: {
-    navToObjecType(item) {
-      this.$router.push({
-        name: 'apiObjectType',
-        params: {
-          objectTypeName: item.name,
-        },
-      });
-    },
-    navToMember(item, member) {
-      this.$router.push({
-        name: 'apiObjectTypeMember',
-        params: {
-          objectTypeName: item.name,
-          memberName: member.name,
-        },
-      });
-    },
     clearFilter() {
       this.$store.commit('setFilter', '');
-    },
-    toggleExpanded(item) {
-      this.$store.commit('toggleMenuExpanded', item.name);
     },
     hasMembers(item) {
       let result = false;
