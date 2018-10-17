@@ -18,24 +18,10 @@
       </td>
     </tr>
 
-    <!-- Static Members -->
+    <!-- Filtered members -->
     <tr
       v-if="item.menuExpanded"
-      v-for="member in item.members.static"
-      v-bind:key="member.namespace"
-      @click.stop="navToMember(item, member)"
-      :class="{ 'is-active': member.name === $route.params.memberName }">
-      <td />
-      <td />
-      <td>
-        {{ member.name }}
-      </td>
-    </tr>
-
-    <!-- Instance Members -->
-    <tr
-      v-if="item.menuExpanded"
-      v-for="member in item.members.instance"
+      v-for="member in members"
       v-bind:key="member.namespace"
       @click.stop="navToMember(item, member)"
       :class="{ 'is-active': member.name === $route.params.memberName }">
@@ -58,6 +44,9 @@ export default {
     },
   },
   computed: {
+    members() {
+      return this.$store.getters.filteredMembers(this.item.name);
+    },
   },
   methods: {
     navToObjecType(item) {
