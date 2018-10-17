@@ -2,12 +2,14 @@
   <div v-if="objectType">
     <div class="columns is-gapless">
       <div class="column">
-        <span class="tag is-white has-text-weight-normal">{{ objectType.kind }}</span>
+        <span class="tag is-white has-text-weight-normal tag-title-prefix">
+          {{ objectType.kind }}
+        </span>
         <span class="title">
           {{ objectType.name }}
         </span>
         <span v-if="objectType.augments.length">
-          <span class="tag is-white has-text-weight-normal">extends</span>
+          <span class="tag is-white has-text-weight-normal tag-title-prefix">extends</span>
           <span class="subtitle">
             <api-named-type-link :type-name="objectType.augments[0].name"/>
           </span>
@@ -37,7 +39,6 @@
 
     <!-- Object type description -->
     <api-description :node="objectType.description"/>
-
 
     <!-- Class members -->
     <div id="api-members"
@@ -103,3 +104,9 @@ export default {
 };
 </script>
 
+<style>
+  span.tag-title-prefix {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="member">
-    <p class="title">{{ member.name }}</p>
+    <p class="title is-4">{{ member.name }}</p>
     <api-method-interface
       :prefix="member.name"
       v-if="member.kind === 'function'"
