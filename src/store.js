@@ -5,6 +5,8 @@ import marked from 'marked';
 
 Vue.use(Vuex);
 
+let matchDocToFilter;
+
 export default new Vuex.Store({
   state: {
     docs: [],
@@ -15,7 +17,7 @@ export default new Vuex.Store({
   getters: {
     objectType: state => typeName => state.docs.find(doc => doc.name === typeName),
     filteredObjectTypes: state => state.filter
-      ? state.docs.filter(doc => doc.name && doc.name.toUpperCase().includes(state.filter.toUpperCase()))
+      ? state.docs.filter(doc => matchDocToFilter(doc, state))
       : state.docs,
     objectTypeMember: state => (typeName, memberName) => {
       const apiType = state.docs.find(doc => doc.name === typeName);
@@ -85,3 +87,35 @@ export default new Vuex.Store({
     },
   },
 });
+
+
+matchDocToFilter = (doc, state) => {
+  const searchTerm = state.filter.toUpperCase();
+  let rootMatch = false;
+  let staticMatch = false;
+  let instanceMatch = false;
+  if (doc.name) {
+    // See if root document (object type) matches
+    rootMatch = doc.name
+      .toUpperCase()
+      .includes(searchTerm);
+
+    // See if any members match
+    if (doc.members) {
+      // See if static members match
+      if (doc.members.static && doc.members.static.length) {
+        const matchIndex = doc.members.static
+          .findIndex(member => member.name && member.name.toUpperCase().includes(searchTerm));
+        staticMatch = matchIndex > -1;
+      }
+
+      // See if instance members match
+      if (doc.members.instance && doc.members.instance.length) {
+        const matchIndex = doc.members.instance
+          .findIndex(member => member.name && member.name.toUpperCase().includes(searchTerm));
+        instanceMatch = matchIndex > -1;
+      }
+    }
+  }
+  return rootMatch || staticMatch || instanceMatch;
+};
