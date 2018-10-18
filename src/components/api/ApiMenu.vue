@@ -67,10 +67,6 @@ export default {
 </script>
 
 <style>
-  td.expand-button-cell {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
   .api-menu-vscroll {
     height: calc( 100vh - 110px );
     overflow-x: hidden;

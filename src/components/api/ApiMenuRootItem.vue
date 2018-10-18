@@ -13,7 +13,7 @@
           </span>
         </div>
       </td>
-      <td colspan=2>
+      <td colspan=2 class="last-table-column">
         {{ item.name }}
       </td>
     </tr>
@@ -25,9 +25,9 @@
       v-bind:key="member.namespace"
       :class="{ 'is-selected': isMemberSelected(member) }"
       @click.stop="navToMember(item, member)">
-      <td />
-      <td />
-      <td>
+      <td/>
+      <td/>
+      <td class="last-table-column">
         {{ member.name }}
       </td>
     </tr>
@@ -55,6 +55,7 @@ export default {
   methods: {
     isMemberSelected(member) {
       return this.$route.name === 'apiObjectTypeMember'
+        && this.$route.params.objectTypeName === this.item.name
         && this.$route.params.memberName === member.name;
     },
     navToObjecType(item) {
@@ -102,3 +103,10 @@ export default {
     background-color: transparent !important;
   }
 </style>
+
+<style scoped>
+  td.last-table-column {
+    width: 100%;
+  }
+</style>
+
