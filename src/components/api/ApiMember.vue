@@ -1,6 +1,13 @@
 <template>
   <div v-if="member">
-    <p class="title is-4">{{ member.name }}</p>
+    <div class="columns">
+      <div class="column">
+        <p class="title is-4">{{ member.name }}</p>
+      </div>
+      <div class="column is-narrow">
+        <docs-github-source :doc="member"/>
+      </div>
+    </div>
     <api-method-interface
       :prefix="member.name"
       v-if="member.kind === 'function'"
@@ -18,6 +25,7 @@ import ApiDescription from './ApiDescription.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
 import ApiPropertyType from './ApiPropertyType.vue';
 import ApiTodos from './ApiTodos.vue';
+import DocsGithubSource from '../docs/DocsGithubSource.vue';
 
 export default {
   name: 'api-member',
@@ -26,6 +34,7 @@ export default {
     ApiMethodInterface,
     ApiPropertyType,
     ApiTodos,
+    DocsGithubSource,
   },
   computed: {
     member() {

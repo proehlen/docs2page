@@ -16,10 +16,7 @@
         </span>
       </div>
       <div class="column is-narrow">
-        <a class="button"
-          target="_new"
-          v-if="objectType.context && objectType.context.github"
-          :href="objectType.context.github.url">source</a>
+        <docs-github-source :doc="objectType"/>
       </div>
     </div>
 
@@ -83,6 +80,7 @@ import ApiMethodInterface from './ApiMethodInterface.vue';
 import ApiNamedTypeLink from './ApiNamedTypeLink.vue';
 import ApiPropertyType from './ApiPropertyType.vue';
 import ApiTodos from './ApiTodos.vue';
+import DocsGithubSource from '../docs/DocsGithubSource.vue';
 
 export default {
   name: 'api-object-type',
@@ -94,6 +92,7 @@ export default {
     ApiNamedTypeLink,
     ApiPropertyType,
     ApiTodos,
+    DocsGithubSource,
   },
   computed: {
     objectType() {
