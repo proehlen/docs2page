@@ -1,28 +1,30 @@
 <template>
-  <nav class="box api-menu api-menu-vscroll">
-      <!-- Search tool -->
-      <p class="field has-addons">
-        <span class="control has-icons-left is-expanded">
-          <input class="input is-small" type="text" placeholder="Search API" v-model="filter">
-          <span class="icon is-small is-left">
-            <font-awesome-icon icon="search" />
+  <nav class="box outer-box">
+    <!-- Search tool -->
+    <p class="field has-addons">
+      <span class="control has-icons-left is-expanded">
+        <input class="input is-small" type="text" placeholder="Search API" v-model="filter">
+        <span class="icon is-small is-left">
+          <font-awesome-icon icon="search" />
+        </span>
+      </span>
+      <span class="control">
+        <a class="button is-small is-white" @click="clearFilter" :disabled="!filter">
+          <span class="icon">
+            <font-awesome-icon icon="times" />
           </span>
-        </span>
-        <span class="control">
-          <a class="button is-small is-white" @click="clearFilter" :disabled="!filter">
-            <span class="icon">
-              <font-awesome-icon icon="times" />
-            </span>
-          </a>
-        </span>
-      </p>
+        </a>
+      </span>
+    </p>
 
-    <table class="table is-narrow is-fullwidth is-hoverable api-menu-table">
-      <tbody>
-        <!-- Root types -->
-        <api-menu-root-item v-for="(item, index) in docs" v-bind:key="index" :item="item"/>
-      </tbody>
-    </table>
+    <div class="api-menu-vscroll">
+      <table class="table is-narrow is-fullwidth is-hoverable api-menu-table">
+        <tbody>
+          <!-- Root types -->
+          <api-menu-root-item v-for="(item, index) in docs" v-bind:key="index" :item="item"/>
+        </tbody>
+      </table>
+    </div>
   </nav>
 </template>
 
@@ -72,5 +74,8 @@ export default {
     overflow-x: hidden;
     overflow-y: auto;
     display: block;
+    padding-right: 40px;
+    margin-right: -20px;
   }
 </style>
+
