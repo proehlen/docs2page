@@ -2,9 +2,9 @@
   <div>
     <tr
       @click="navToObjecType(item)"
-      :class="{ 'is-active': item.name === $route.params.objectTypeName }">
+      :class="{ 'is-selected': objectTypeIsSelected }">
       <td class="expand-button-cell" @click.stop="toggleExpanded(item)">
-        <div class="button is-small is-white">
+        <div class="button is-small is-white" :class="{ 'is-inverted': objectTypeIsSelected }">
           <span class="icon is-small">
             <span v-if="hasMembers(item)">
               <font-awesome-icon v-if="item.menuExpanded" icon="chevron-down" />
@@ -23,8 +23,8 @@
       v-if="item.menuExpanded"
       v-for="member in members"
       v-bind:key="member.namespace"
-      @click.stop="navToMember(item, member)"
-      :class="{ 'is-active': member.name === $route.params.memberName }">
+      :class="{ 'is-selected': isMemberSelected(member) }"
+      @click.stop="navToMember(item, member)">
       <td />
       <td />
       <td>
@@ -47,8 +47,16 @@ export default {
     members() {
       return this.$store.getters.filteredMembers(this.item.name);
     },
+    objectTypeIsSelected() {
+      return this.$route.name === 'apiObjectType'
+        && this.$route.params.objectTypeName === this.item.name;
+    },
   },
   methods: {
+    isMemberSelected(member) {
+      return this.$route.name === 'apiObjectTypeMember'
+        && this.$route.params.memberName === member.name;
+    },
     navToObjecType(item) {
       this.$router.push({
         name: 'apiObjectType',
@@ -88,5 +96,9 @@ export default {
   td.expand-button-cell {
     padding-left: 0px !important;
     padding-right: 0px !important;
+  }
+
+  td.expand-button-cell > div.button {
+    background-color: transparent !important;
   }
 </style>
