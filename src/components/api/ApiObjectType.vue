@@ -40,6 +40,9 @@
     <!-- Object type description -->
     <api-description :node="objectType.description"/>
 
+    <!-- Todos -->
+    <api-todos :tags="objectType.tags"/>
+
     <!-- Class members -->
     <div id="api-members"
       v-if="objectType.kind === 'class'"
@@ -79,6 +82,7 @@ import ApiMembers from './ApiMembers.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
 import ApiNamedTypeLink from './ApiNamedTypeLink.vue';
 import ApiPropertyType from './ApiPropertyType.vue';
+import ApiTodos from './ApiTodos.vue';
 
 export default {
   name: 'api-object-type',
@@ -89,6 +93,7 @@ export default {
     ApiMethodInterface,
     ApiNamedTypeLink,
     ApiPropertyType,
+    ApiTodos,
   },
   computed: {
     objectType() {

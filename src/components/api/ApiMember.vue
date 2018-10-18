@@ -9,6 +9,7 @@
       v-else-if="member.returns && member.returns.length"
       :api-type="member.returns[0].type"/>
     <api-description :node="member.description" />
+    <api-todos :tags="member.tags"/>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 import ApiDescription from './ApiDescription.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
 import ApiPropertyType from './ApiPropertyType.vue';
+import ApiTodos from './ApiTodos.vue';
 
 export default {
   name: 'api-member',
@@ -23,6 +25,7 @@ export default {
     ApiDescription,
     ApiMethodInterface,
     ApiPropertyType,
+    ApiTodos,
   },
   computed: {
     member() {
