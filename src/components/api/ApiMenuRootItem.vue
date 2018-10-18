@@ -105,6 +105,13 @@ export default {
 </style>
 
 <style scoped>
+  .table td {
+    border-width: 0px;
+  }
+</style>
+
+
+<style scoped>
   td.last-table-column {
     width: 100%;
   }
