@@ -15,13 +15,13 @@
     <api-property-type
       v-else-if="member.returns && member.returns.length"
       :api-type="member.returns[0].type"/>
-    <api-description :node="member.description" />
+    <docs-description :node="member.description" />
     <api-todos :tags="member.tags"/>
   </div>
 </template>
 
 <script>
-import ApiDescription from './ApiDescription.vue';
+import DocsDescription from '../docs/DocsDescription.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
 import ApiPropertyType from './ApiPropertyType.vue';
 import ApiTodos from './ApiTodos.vue';
@@ -30,7 +30,7 @@ import DocsGithubSource from '../docs/DocsGithubSource.vue';
 export default {
   name: 'api-member',
   components: {
-    ApiDescription,
+    DocsDescription,
     ApiMethodInterface,
     ApiPropertyType,
     ApiTodos,

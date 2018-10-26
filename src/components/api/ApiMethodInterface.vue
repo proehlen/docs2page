@@ -4,22 +4,22 @@
       <span v-for="(param, index) in params" v-bind:key="param.name">
         <span v-if="index > 0">,&nbsp;</span>
         <span v-if="param.name">{{ param.name }}: </span>
-        <api-type :api-type="param.type"/>
+        <docs-type :api-type="param.type"/>
       </span>
     )<span v-if="returns && returns.length">:&nbsp;</span>
       <span v-for="(returnType, index) in returns" v-bind:key="returnType.name">
         <span v-if="index > 0">|&nbsp;</span>
-        <api-type :api-type="returnType.type"/>
+        <docs-type :api-type="returnType.type"/>
       </span>
     </code>
   </pre>
 </template>
 
 <script>
-import ApiType from './ApiType.vue';
+import DocsType from '../docs/DocsType.vue';
 
 export default {
-  name: 'api-interface',
+  name: 'api-method-interface',
   props: {
     prefix: {
       type: String,
@@ -33,7 +33,7 @@ export default {
     },
   },
   components: {
-    ApiType,
+    DocsType,
   },
 };
 </script>

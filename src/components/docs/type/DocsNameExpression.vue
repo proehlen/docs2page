@@ -21,7 +21,7 @@ const jsTypes = [
   'Uint8Array',
 ];
 export default {
-  name: 'api-named-type-link',
+  name: 'docs-name-expression',
   props: {
     typeName: {
       type: String,
