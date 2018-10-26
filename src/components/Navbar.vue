@@ -54,7 +54,11 @@ export default {
   },
   computed: {
     repoUrl() {
-      return this.$store.state.packageFile.repository.url;
+      let result = '';
+      if (this.$store.state.packageFile.repository) {
+        result = this.$store.state.packageFile.repository.url;
+      }
+      return result;
     },
     version() {
       return this.$store.state.packageFile.version;
