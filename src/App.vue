@@ -22,6 +22,16 @@ export default {
     this.$store.dispatch('loadReadMe');
     this.$store.dispatch('loadPackageFile');
   },
+  computed: {
+    packageName() {
+      return this.$store.state.packageFile.name;
+    },
+  },
+  watch: {
+    packageName() {
+      document.title = this.packageName;
+    },
+  },
 };
 </script>
 
