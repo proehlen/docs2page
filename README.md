@@ -43,5 +43,5 @@ Docs2page generates the API page from output produced by the excellent [document
 
 ## Publishing
 
-The many options for hosting and publishing your project's website is beyond the scope of this document, however [GitHub Pages provides an easy (automated) and cheap (free) service that will automatically update for you without requiring any extra steps](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/).  My personally prefered strategy is to publish from the `/docs` folder in the `master` branch.
+The many options for hosting and publishing your project website are beyond the scope of this document, however [GitHub Pages provides an easy (automated) and cheap (free) service that will automatically update for you without requiring any extra steps](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/).  My personally prefered strategy is to publish from the `/docs` folder in the `master` branch.
 
