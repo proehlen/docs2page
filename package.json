@@ -1,6 +1,6 @@
 {
   "name": "docs2page",
-  "description": "Automatically create and maintain a website for your project",
+  "description": "Automagic project websites",
   "version": "0.0.1",
   "homepage": "https://github.com/proehlen/docs2page#README.md",
   "author": "Peter Roehlen",
@@ -10,6 +10,7 @@
     "url": "https://github.com/proehlen/docs2page.git"
   },
   "keywords": [
+    "JavaScript",
     "project",
     "documentation",
     "page",
@@ -28,7 +29,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepare": "vue-cli-service build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.6",

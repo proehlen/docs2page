@@ -16,7 +16,7 @@ const overrideFiles = [
 
 const preserveFiles = [
   'favicon.ico',
-  'logo.svg',
+  'logo.png',
 ];
 
 const clientProjectFiles = [

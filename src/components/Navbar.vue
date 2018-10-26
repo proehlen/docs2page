@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/">
-          <img src="logo.svg">
+          <img src="logo.png">
           <span class="tag version is-white">v{{ version }}</span>
         </router-link>
 
@@ -69,6 +69,6 @@ export default {
 
 <style>
   span.tag.version {
-    margin-top: 12px;
+    margin-top: 7px;
   }
 </style>
