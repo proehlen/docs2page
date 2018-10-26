@@ -22,4 +22,6 @@ yarn-error.log*
 public/package.json
 public/docs.json
 public/README.md
+public/logo.svg
+public/favicon.ico
 scratch*
