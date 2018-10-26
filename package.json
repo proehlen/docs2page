@@ -27,10 +27,11 @@
     "bin"
   ],
   "scripts": {
+    "purify-dist": "node purifyDist.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "prepare": "vue-cli-service build"
+    "prepare": "vue-cli-service build && npm run purify-dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.6",
