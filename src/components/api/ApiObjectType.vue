@@ -44,7 +44,7 @@
     <div id="api-members"
       v-if="objectType.kind === 'class'"
       class="columns">
-      <div class="column is-half">
+      <div v-if="objectType.members.static.length" class="column">
         <div class="card">
           <div class="card-header">
             <p class="card-header-title">
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="column is-half">
+      <div v-if="objectType.members.instance.length" class="column">
         <div class="card">
           <div class="card-header">
             <p class="card-header-title">
