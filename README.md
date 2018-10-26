@@ -27,19 +27,24 @@ Docs2page generates the API page from output produced by the excellent [document
 ## Set up
 
 * `npm install docs2page --save-dev`
-* Create a `docs` folder in the root of your project and add to it the following image files that represent your project:
-  * `logo.svg`
-  * `favicon.ico`
-
-  All other content in this folder will be produced automatically and the above 2 files should be the only files you may wish to change in future.
-* Include `docs2page` somewhere in your build or pre-publishing pipeline, eg in your `package.json` file like this:
+* Include `docs2page` as a script your `package.json` file like this:
   ```
   "scripts": {
     ...
-    "prepare": "docs2page"
+    "docs": "docs2page"
     ...
   }
   ```
+* Run `npm run docs`.  Your project webpage will be created in the `docs` folder.
+
+## Icons and logos 
+ 
+Docs2page will create a default placeholder favicon and logo for you in the `docs` folder.  You may overwrite these with custom files for your project.  The two files are:
+
+* `docs/logo.svg`
+* `docs/favicon.ico`
+
+  All other content produced by this package in the `docs` folder will be automatically overwritten whenever the script is run but the above 2 files will be preserved.
 
 ## Publishing
 
