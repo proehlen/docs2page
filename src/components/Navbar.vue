@@ -29,7 +29,7 @@
         </div>
 
         <div class="navbar-end">
-          <a class="navbar-item is-white" target="_new" href="https://github.com/proehlen/cashlib">
+          <a class="navbar-item is-white" target="_new" :href="repoUrl">
             <img src="GitHub.png">
           </a>
       </div>
@@ -47,6 +47,9 @@ export default {
     };
   },
   computed: {
+    repoUrl() {
+      return this.$store.state.packageFile.repository.url;
+    },
     version() {
       return this.$store.state.packageFile.version;
     },

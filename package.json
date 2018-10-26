@@ -1,8 +1,27 @@
 {
-  "name": "cashlib-page",
-  "description": "The webpage for the Cashlib library",
-  "version": "0.1.0",
-  "private": true,
+  "name": "docs2page",
+  "description": "Automatically create and maintain a website for your project",
+  "version": "0.0.1",
+  "homepage": "https://github.com/proehlen/docs2page#README.md",
+  "author": "Peter Roehlen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/proehlen/docs2page.git"
+  },
+  "keywords": [
+    "project",
+    "documentation",
+    "page",
+    "website",
+    "automatic",
+    "documentation.js",
+    "README.md"
+  ],
+  "files": [
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
