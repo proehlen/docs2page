@@ -6,7 +6,7 @@ Docs2page automatically builds a web app to serve as your project website using 
 * `package.json` file
 * Code comments
 
-Web apps produced by this package can be hosted on GitHub Pages or any other cheap hosting option since it requires no server.
+Web apps produced by this package can be hosted on GitHub Pages or any other cheap hosting option since they require no server.
 
 **Note:** This software is under construction and in pre-alpha state.
 
@@ -21,6 +21,8 @@ Your `package.json` file should have the following fields maintained:
 * `repository.url`
 
 ### Code comments
+
+Docs2page expects to find your source code in the `src` folder of your project.
 
 Docs2page generates the API page from output produced by the excellent [documentation.js](http://documentation.js.org/) package - a jsdocs builder with a lot of smarts built in to intelligently and automatically infer many tags.  `documentation.js` is particularly good for [Flow](https://flow.org/) projects since it can produce docs automatically from flow type annotations.  Docs2page will install and run `documentation.js` for you but it is up to you to document your source code according to its [easy to follow conventions](https://github.com/documentationjs/documentation/blob/master/docs/GETTING_STARTED.md).
 
@@ -39,7 +41,7 @@ Docs2page generates the API page from output produced by the excellent [document
 
 ## Icons and logos 
  
-Docs2page will create a default placeholder favicon and logo for you in the `docs` folder.  You may overwrite these with custom files for your project.  The two files are:
+Docs2page will create a default placeholder favicon and logo for you in the `docs` folder.  You should replace these with custom files for your project.  The two files are:
 
 * `docs/logo.png`
 * `docs/favicon.ico`
