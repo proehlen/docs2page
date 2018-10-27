@@ -1,13 +1,26 @@
 <template>
   <div v-if="member">
-    <div class="columns">
+    <div class="columns is-gapless">
       <div class="column">
-        <p class="title is-4">{{ member.name }}</p>
+        <span class="title">
+          {{ member.name }}
+        </span>
+        <span>
+          <span class="tag is-white has-text-weight-normal tag-title-prefix">
+            {{ member.scope }}&nbsp;
+          </span>
+          <span class="tag is-white has-text-weight-normal tag-title-prefix">member of</span>
+          <span class="subtitle">
+            <docs-name-expression :type-name="member.memberof"/>
+          </span>
+        </span>
       </div>
       <div class="column is-narrow">
         <docs-github-source :doc="member"/>
       </div>
     </div>
+
+
     <api-method-interface
       :prefix="member.name"
       v-if="member.kind === 'function'"
@@ -22,6 +35,7 @@
 
 <script>
 import DocsDescription from '../docs/DocsDescription.vue';
+import DocsNameExpression from '../docs/type/DocsNameExpression.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
 import ApiPropertyType from './ApiPropertyType.vue';
 import ApiTodos from './ApiTodos.vue';
@@ -30,11 +44,12 @@ import DocsGithubSource from '../docs/DocsGithubSource.vue';
 export default {
   name: 'api-member',
   components: {
-    DocsDescription,
     ApiMethodInterface,
     ApiPropertyType,
     ApiTodos,
+    DocsDescription,
     DocsGithubSource,
+    DocsNameExpression,
   },
   computed: {
     member() {
