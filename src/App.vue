@@ -4,18 +4,14 @@
     <section class="section">
       <div class="container">
         <router-view/>
-        <footer class="footer">
-          <div class="content has-text-centered is-size-6">
-            <p class="has-text-weight-light">
-              This website was built with
-              <a href="https://www.npmjs.com/package/docs2page" target="_new">
-                <strong>
-                  Docs2page
-                </strong>
-              </a>.
-            </p>
-          </div>
-        </footer>
+        <div class="content has-text-centered is-size-7">
+          <p class="has-text-weight-light">
+            This website was built with
+            <a href="https://www.npmjs.com/package/docs2page" target="_new">
+              Docs2page
+            </a>.
+          </p>
+        </div>
       </div>
     </section>
   </div>
