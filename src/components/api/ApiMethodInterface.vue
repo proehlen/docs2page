@@ -7,7 +7,6 @@
         <span v-if="index > 0">,&nbsp;</span>
         <span v-if="param.name">
           <span>{{ param.name }}</span>
-          <span v-if="param.type.kind === 'OptionalType'">?</span>
           <span class="no-pre-space">:&nbsp;</span>
         </span>
         <docs-type class="no-pre-space" :api-type="param.type"/>

@@ -11,6 +11,9 @@
   <span v-else-if="apiType.type === 'NameExpression'">
     <docs-name-expression :type-name="apiType.name"/>
   </span>
+  <span v-else-if="apiType.type === 'OptionalType'">
+    <docs-type :apiType="apiType.expression"/>
+  </span>
   <span v-else-if="apiType.type === 'RecordType'">
     <span class="no-pre-space">
       {
@@ -26,7 +29,15 @@
     </span>
   </span>
   <span v-else-if="apiType.type === 'FieldType'">
-    <span>{{ apiType.key }}: </span>
+    <span>
+      {{ apiType.key }}
+    </span>
+    <span v-if="apiType.value.type === 'OptionalType'" class="no-pre-space">
+      ?
+    </span>
+    <span class="no-pre-space">
+      :
+    </span>
     <docs-type :apiType="apiType.value"/>
   </span>
   <span v-else-if="apiType.type === 'UnionType'">
