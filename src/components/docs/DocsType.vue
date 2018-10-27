@@ -24,11 +24,12 @@
   </span>
   <span v-else-if="apiType.type === 'TypeApplication'">
     <docs-type :apiType="apiType.expression"/>
-    of
+    &lt;
     <span v-for="(application, index) in apiType.applications" v-bind:key="index">
       <span v-if="index > 0">,&nbsp;</span>
       <docs-type :apiType="application"/>
     </span>
+    &gt;
   </span>
   <span v-else-if="apiType.type === 'NullableType'">
     ?<docs-type :apiType="apiType.expression"/>

@@ -35,7 +35,7 @@
       :apiType="objectType.type"/>
 
     <!-- Object type description -->
-    <dos-description :node="objectType.description"/>
+    <docs-description :node="objectType.description"/>
 
     <!-- Todos -->
     <api-todos :tags="objectType.tags"/>
