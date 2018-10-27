@@ -2,6 +2,9 @@
   <span v-if="apiType.type === 'VoidLiteral'">
     void
   </span>
+  <span v-else-if="apiType.type === 'AllLiteral'">
+    any
+  </span>
   <span v-else-if="apiType.type === 'StringLiteralType'">
     "{{ apiType.value }}"
   </span>
