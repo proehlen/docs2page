@@ -1,12 +1,16 @@
 <template>
   <a v-if="externalUrl"
     :href="externalUrl"
-    target="_new">{{ typeName }}</a>
+    target="_new">
+    {{ typeName }}
+  </a>
   <router-link v-else-if="libraryType"
     :to="{ name: 'apiObjectType', params: { objectTypeName: typeName, }}">
     {{ typeName }}
   </router-link>
-  <span v-else>{{ typeName }}</span>
+  <span v-else>
+    {{ typeName }}
+  </span>
 </template>
 
 <script>

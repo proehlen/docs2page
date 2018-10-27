@@ -1,15 +1,24 @@
 <template>
   <pre class="api-method-interface">
-    <code>{{ prefix }}(
-      <span v-for="(param, index) in params" v-bind:key="param.name">
+    <code>
+      <span>{{ prefix }}</span>
+      <span class="no-pre-space">(</span>
+      <span v-for="(param, index) in params" v-bind:key="param.name" class="no-pre-space">
         <span v-if="index > 0">,&nbsp;</span>
-        <span v-if="param.name">{{ param.name }}: </span>
-        <docs-type :api-type="param.type"/>
+        <span v-if="param.name">
+          <span>{{ param.name }}</span>
+          <span v-if="param.type.kind === 'OptionalType'">?</span>
+          <span class="no-pre-space">:&nbsp;</span>
+        </span>
+        <docs-type class="no-pre-space" :api-type="param.type"/>
       </span>
-    )<span v-if="returns && returns.length">:&nbsp;</span>
+      <span class="no-pre-space">)</span>
+      <span v-if="returns && returns.length" class="no-pre-space">:&nbsp;</span>
       <span v-for="(returnType, index) in returns" v-bind:key="returnType.name">
-        <span v-if="index > 0">|&nbsp;</span>
-        <docs-type :api-type="returnType.type"/>
+        <span v-if="index > 0" class="no-pre-spac">
+          &nbsp;|&nbsp;
+        </span>
+        <docs-type class="no-pre-space" :api-type="returnType.type"/>
       </span>
     </code>
   </pre>

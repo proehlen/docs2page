@@ -1,14 +1,26 @@
 <template>
-  <span v-if="apiType.type === 'VoidLiteral'">void</span>
-  <span v-else-if="apiType.type === 'StringLiteralType'">"{{ apiType.value }}"</span>
+  <span v-if="apiType.type === 'VoidLiteral'">
+    void
+  </span>
+  <span v-else-if="apiType.type === 'StringLiteralType'">
+    "{{ apiType.value }}"
+  </span>
   <span v-else-if="apiType.type === 'NameExpression'">
     <docs-name-expression :type-name="apiType.name"/>
   </span>
-  <span v-else-if="apiType.type === 'RecordType'">{
+  <span v-else-if="apiType.type === 'RecordType'">
+    <span class="no-pre-space">
+      {
+    </span>
     <span v-for="(field, index) in apiType.fields" v-bind:key="field.key">
-      <span v-if="index > 0">,&nbsp;</span>
-      <docs-type :apiType="field"/>
-    </span>&nbsp;}
+      <span v-if="index > 0" class="no-pre-space">
+        ,&nbsp;
+      </span>
+      <docs-type class="no-pre-space" :apiType="field"/>
+    </span>
+    <span class="no-pre-space">
+      }
+    </span>
   </span>
   <span v-else-if="apiType.type === 'FieldType'">
     <span>{{ apiType.key }}: </span>
@@ -24,12 +36,13 @@
   </span>
   <span v-else-if="apiType.type === 'TypeApplication'">
     <docs-type :apiType="apiType.expression"/>
-    &lt;
-    <span v-for="(application, index) in apiType.applications" v-bind:key="index">
+    <span class="no-pre-space">&lt;</span>
+    <span v-for="(application, index) in apiType.applications"
+      v-bind:key="index" class="no-pre-space">
       <span v-if="index > 0">,&nbsp;</span>
       <docs-type :apiType="application"/>
     </span>
-    &gt;
+    <span class="no-pre-space">&gt;</span>
   </span>
   <span v-else-if="apiType.type === 'NullableType'">
     ?<docs-type :apiType="apiType.expression"/>
