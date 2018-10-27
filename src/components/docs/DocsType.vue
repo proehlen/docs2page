@@ -8,6 +8,13 @@
   <span v-else-if="apiType.type === 'StringLiteralType'">
     "{{ apiType.value }}"
   </span>
+  <span v-else-if="apiType.type === 'ParameterType'">
+    <span v-if="apiType.name">
+      <span>{{ apiType.name }}</span>
+      <span class="no-pre-space">:&nbsp;</span>
+    </span>
+    <docs-type class="no-pre-space" :api-type="apiType.expression"/>
+  </span>
   <span v-else-if="apiType.type === 'NameExpression'">
     <docs-name-expression :type-name="apiType.name"/>
   </span>
@@ -65,10 +72,12 @@
   <span v-else-if="apiType.type === 'NullableType'">
     ?<docs-type :apiType="apiType.expression"/>
   </span>
+  <docs-function-type v-else-if="apiType.type === 'FunctionType'" :apiType="apiType"/>
   <span v-else>{{ apiType.name || `Unrecognized ${apiType.type}` }}</span>
 </template>
 
 <script>
+import DocsFunctionType from './type/DocsFunctionType.vue';
 import DocsNameExpression from './type/DocsNameExpression.vue';
 
 export default {
@@ -80,6 +89,7 @@ export default {
     },
   },
   components: {
+    DocsFunctionType,
     DocsNameExpression,
     // Mitigate component recursion using webpack dynamic import
     'docs-type': () => import('./DocsType.vue'),
