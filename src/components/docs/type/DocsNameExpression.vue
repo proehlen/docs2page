@@ -5,7 +5,7 @@
     {{ typeName }}
   </a>
   <router-link v-else-if="libraryType"
-    :to="{ name: 'apiObjectType', params: { objectTypeName: typeName, }}">
+    :to="{ name: 'apiRoot', params: { objectTypeName: typeName, }}">
     {{ typeName }}
   </router-link>
   <span v-else>

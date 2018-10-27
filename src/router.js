@@ -20,12 +20,12 @@ export default new Router({
     {
       path: '/api/:objectTypeName',
       component: Api,
-      name: 'apiObjectType',
+      name: 'apiRoot',
     },
     {
       path: '/api/:objectTypeName/:memberName',
       component: Api,
-      name: 'apiObjectTypeMember',
+      name: 'apiRootMember',
     },
   ],
   scrollBehavior(to, from, savedPosition) {
