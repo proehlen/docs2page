@@ -18,12 +18,12 @@ export default new Router({
       name: 'api',
     },
     {
-      path: '/api/type/:objectTypeName',
+      path: '/api/:objectTypeName',
       component: Api,
       name: 'apiObjectType',
     },
     {
-      path: '/api/type/:objectTypeName/member/:memberName',
+      path: '/api/:objectTypeName/:memberName',
       component: Api,
       name: 'apiObjectTypeMember',
     },
