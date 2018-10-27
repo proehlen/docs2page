@@ -1,5 +1,13 @@
 // vue.config.js
 module.exports = {
   // options...
-  baseUrl: '', // Github pages requires this
+  // Github pages requires this
+  baseUrl: '',
+
+  outputDir: undefined,
+  assetsDir: undefined,
+  runtimeCompiler: undefined,
+  productionSourceMap: false,
+  parallel: undefined,
+  css: undefined,
 };
