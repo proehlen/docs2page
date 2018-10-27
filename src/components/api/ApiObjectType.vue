@@ -40,10 +40,8 @@
     <!-- Todos -->
     <api-todos :tags="objectType.tags"/>
 
-    <!-- Class members -->
-    <div id="api-members"
-      v-if="objectType.kind === 'class'"
-      class="columns">
+    <!-- Members -->
+    <div class="columns">
       <div v-if="objectType.members.static.length" class="column">
         <div class="card">
           <div class="card-header">
