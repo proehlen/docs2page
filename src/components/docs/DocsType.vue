@@ -8,6 +8,9 @@
   <span v-else-if="apiType.type === 'StringLiteralType'">
     "{{ apiType.value }}"
   </span>
+  <span v-else-if="apiType.type === 'NumericLiteralType'">
+    {{ apiType.value }}
+  </span>
   <span v-else-if="apiType.type === 'ParameterType'">
     <span v-if="apiType.name">
       <span>{{ apiType.name }}</span>
