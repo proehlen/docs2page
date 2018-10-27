@@ -29,7 +29,7 @@ export default {
           typeName: this.$route.params.typeName,
           memberName: member,
         },
-        hash: '#api-members',
+        hash: '#members',
       });
     },
   },

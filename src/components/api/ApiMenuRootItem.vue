@@ -73,6 +73,7 @@ export default {
           objectTypeName: item.name,
           memberName: member.name,
         },
+        hash: '#members',
       });
     },
     toggleExpanded(item) {

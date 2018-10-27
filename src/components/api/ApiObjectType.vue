@@ -40,8 +40,8 @@
     <!-- Todos -->
     <api-todos :tags="objectType.tags"/>
 
-    <!-- Members -->
-    <div class="columns">
+    <!-- Members (id is needed for hash tag scrolling) -->
+    <div class="columns" id="members">
       <div v-if="objectType.members.static.length" class="column">
         <div class="card">
           <div class="card-header">
