@@ -62,7 +62,7 @@ fs
 
         Promise.all(copyFiles).then(() => {
           console.log('Building docs.json in', clientDocs);
-          documentation.build(['src'], {})
+          documentation.build(['src'], { github: true })
             .then(comments => documentation.formats.json(comments, {}))
             .then((output) => {
               // output is a string of JSON data
