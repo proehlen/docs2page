@@ -30,7 +30,9 @@
     <span
       v-for="(element, index) in apiType.elements"
       v-bind:key="element.name">
-      <span v-if="index > 0">&nbsp;|&nbsp;</span>
+      <span v-if="index > 0" class="no-pre-space">
+        &nbsp;|
+      </span>
       <docs-type :apiType="element"/>
     </span>
   </span>
@@ -42,7 +44,9 @@
       <span v-if="index > 0">,&nbsp;</span>
       <docs-type :apiType="application"/>
     </span>
-    <span class="no-pre-space">&gt;</span>
+    <span class="no-pre-space">
+      &gt;
+    </span>
   </span>
   <span v-else-if="apiType.type === 'NullableType'">
     ?<docs-type :apiType="apiType.expression"/>
