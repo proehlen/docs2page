@@ -48,19 +48,19 @@ export default {
       return this.$store.getters.filteredMembers(this.item.name);
     },
     objectTypeIsSelected() {
-      return this.$route.name === 'apiObjectType'
+      return this.$route.name === 'apiRoot'
         && this.$route.params.objectTypeName === this.item.name;
     },
   },
   methods: {
     isMemberSelected(member) {
-      return this.$route.name === 'apiObjectTypeMember'
+      return this.$route.name === 'apiRootMember'
         && this.$route.params.objectTypeName === this.item.name
         && this.$route.params.memberName === member.name;
     },
     navToObjecType(item) {
       this.$router.push({
-        name: 'apiObjectType',
+        name: 'apiRoot',
         params: {
           objectTypeName: item.name,
         },
@@ -68,11 +68,12 @@ export default {
     },
     navToMember(item, member) {
       this.$router.push({
-        name: 'apiObjectTypeMember',
+        name: 'apiRootMember',
         params: {
           objectTypeName: item.name,
           memberName: member.name,
         },
+        hash: '#members',
       });
     },
     toggleExpanded(item) {

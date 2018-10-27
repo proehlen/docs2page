@@ -11,7 +11,7 @@
         <span v-if="objectType.augments.length">
           <span class="tag is-white has-text-weight-normal tag-title-prefix">extends</span>
           <span class="subtitle">
-            <api-named-type-link :type-name="objectType.augments[0].name"/>
+            <docs-name-expression :type-name="objectType.augments[0].name"/>
           </span>
         </span>
       </div>
@@ -35,16 +35,14 @@
       :apiType="objectType.type"/>
 
     <!-- Object type description -->
-    <api-description :node="objectType.description"/>
+    <docs-description :node="objectType.description"/>
 
     <!-- Todos -->
     <api-todos :tags="objectType.tags"/>
 
-    <!-- Class members -->
-    <div id="api-members"
-      v-if="objectType.kind === 'class'"
-      class="columns">
-      <div class="column is-half">
+    <!-- Members (id is needed for hash tag scrolling) -->
+    <div class="columns" id="members">
+      <div v-if="objectType.members.static.length" class="column">
         <div class="card">
           <div class="card-header">
             <p class="card-header-title">
@@ -56,7 +54,7 @@
           </div>
         </div>
       </div>
-      <div class="column is-half">
+      <div v-if="objectType.members.instance.length" class="column">
         <div class="card">
           <div class="card-header">
             <p class="card-header-title">
@@ -74,25 +72,25 @@
 
 <script>
 import ApiConstructor from './ApiConstructor.vue';
-import ApiDescription from './ApiDescription.vue';
+import DocsDescription from '../docs/DocsDescription.vue';
 import ApiMembers from './ApiMembers.vue';
 import ApiMethodInterface from './ApiMethodInterface.vue';
-import ApiNamedTypeLink from './ApiNamedTypeLink.vue';
 import ApiPropertyType from './ApiPropertyType.vue';
 import ApiTodos from './ApiTodos.vue';
 import DocsGithubSource from '../docs/DocsGithubSource.vue';
+import DocsNameExpression from '../docs/type/DocsNameExpression.vue';
 
 export default {
   name: 'api-object-type',
   components: {
     ApiConstructor,
-    ApiDescription,
+    DocsDescription,
     ApiMembers,
     ApiMethodInterface,
-    ApiNamedTypeLink,
     ApiPropertyType,
     ApiTodos,
     DocsGithubSource,
+    DocsNameExpression,
   },
   computed: {
     objectType() {

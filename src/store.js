@@ -71,16 +71,16 @@ export default new Vuex.Store({
       : state.docs,
     objectTypeMember: state => (typeName, memberName) => {
       const apiType = state.docs.find(doc => doc.name === typeName);
-      let apiObjectTypeMember;
+      let apiRootMember;
       if (apiType) {
         // Look for static member
-        apiObjectTypeMember = apiType.members.static.find(member => member.name === memberName);
-        if (!apiObjectTypeMember) {
+        apiRootMember = apiType.members.static.find(member => member.name === memberName);
+        if (!apiRootMember) {
           // Look for instance member
-          apiObjectTypeMember = apiType.members.instance.find(member => member.name === memberName);
+          apiRootMember = apiType.members.instance.find(member => member.name === memberName);
         }
       }
-      return apiObjectTypeMember;
+      return apiRootMember;
     },
   },
   actions: {

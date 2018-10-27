@@ -18,14 +18,14 @@ export default new Router({
       name: 'api',
     },
     {
-      path: '/api/type/:objectTypeName',
+      path: '/api/:objectTypeName',
       component: Api,
-      name: 'apiObjectType',
+      name: 'apiRoot',
     },
     {
-      path: '/api/type/:objectTypeName/member/:memberName',
+      path: '/api/:objectTypeName/:memberName',
       component: Api,
-      name: 'apiObjectTypeMember',
+      name: 'apiRootMember',
     },
   ],
   scrollBehavior(to, from, savedPosition) {

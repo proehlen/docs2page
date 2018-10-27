@@ -65,4 +65,7 @@ export default {
     padding-top: 1.25rem !important;
     padding-bottom: 1.25rem !important;
   }
+  .no-pre-space {
+    margin-left: -7px;
+  }
 </style>

@@ -1,7 +1,7 @@
 {
   "name": "docs2page",
   "description": "Automagic project websites",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/proehlen/docs2page#README.md",
   "author": "Peter Roehlen",
   "license": "MIT",
@@ -27,10 +27,11 @@
     "bin"
   ],
   "scripts": {
+    "purify-dist": "node purifyDist.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "prepare": "vue-cli-service build"
+    "prepare": "vue-cli-service build && npm run purify-dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.6",

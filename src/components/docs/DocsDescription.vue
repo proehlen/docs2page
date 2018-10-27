@@ -7,10 +7,10 @@
 
 <script>
 
-import DocsNode from '../docs/DocsNode.vue';
+import DocsNode from './description/DocsNode.vue';
 
 export default {
-  name: 'api-description',
+  name: 'docs-description',
   props: {
     node: {
       required: true,

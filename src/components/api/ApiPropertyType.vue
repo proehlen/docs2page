@@ -1,13 +1,13 @@
 <template>
   <pre class="api-property-type">
     <code>
-      <api-type :api-type="apiType"/>
+      <docs-type :api-type="apiType"/>
     </code>
   </pre>
 </template>
 
 <script>
-import ApiType from './ApiType.vue';
+import DocsType from '../docs/DocsType.vue';
 
 export default {
   name: 'api-property-type',
@@ -18,7 +18,7 @@ export default {
     },
   },
   components: {
-    ApiType,
+    DocsType,
   },
 };
 </script>

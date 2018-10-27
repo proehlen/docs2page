@@ -1,6 +1,6 @@
 <template>
   <router-link v-if="node.url.substr(0,4) !=='http'"
-    :to="{ name: 'apiObjectType', params: {objectTypeName: node.url }}">
+    :to="{ name: 'apiRoot', params: {objectTypeName: node.url }}">
     <docs-node v-for="(child, index) in node.children" v-bind:key="index" :node="child"/>
   </router-link>
   <a v-else

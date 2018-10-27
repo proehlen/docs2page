@@ -5,10 +5,8 @@
     </div>
     <div class="column">
       <section class="section">
-        <api-object-type v-if="this.$route.params.objectTypeName"/>
-      </section>
-      <section class="section">
-        <api-member v-if="this.$route.params.memberName"/>
+        <api-object-type v-if="this.$route.name === 'apiRoot'"/>
+        <api-member v-else-if="this.$route.name === 'apiRootMember'"/>
       </section>
     </div>
   </div>

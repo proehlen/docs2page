@@ -1,12 +1,16 @@
 <template>
   <a v-if="externalUrl"
     :href="externalUrl"
-    target="_new">{{ typeName }}</a>
+    target="_new">
+    {{ typeName }}
+  </a>
   <router-link v-else-if="libraryType"
-    :to="{ name: 'apiObjectType', params: { objectTypeName: typeName, }}">
+    :to="{ name: 'apiRoot', params: { objectTypeName: typeName, }}">
     {{ typeName }}
   </router-link>
-  <span v-else>{{ typeName }}</span>
+  <span v-else>
+    {{ typeName }}
+  </span>
 </template>
 
 <script>
@@ -21,7 +25,7 @@ const jsTypes = [
   'Uint8Array',
 ];
 export default {
-  name: 'api-named-type-link',
+  name: 'docs-name-expression',
   props: {
     typeName: {
       type: String,
